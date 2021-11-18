@@ -2,17 +2,25 @@ package demo.database;
 
 import demo.domain.User;
 
+import java.util.ArrayList;
+
+// File Simulation - uses in memory list instead of csv file
 public class FileHandlerStub implements Database {
 
+    private ArrayList<User> users = new ArrayList();
 
+    public User findUser(String name, String password) {
 
-    public User findUser(String name, String password){
-
-        //TODO Change later to real code
-        return new User("John Smith", "1234");
+        for (int i = 0; i < users.size(); i++) {
+            User temp = users.get(i);
+            if (temp.getName().equals(name) && temp.getPassword().equals(temp.getPassword())) {
+                return temp;
+            }
+        }
+        return null;
     }
 
-    public void saveUser(User user){
-        System.out.println("Saved");
+    public void saveUser(User user) {
+        users.add(user);
     }
 }
