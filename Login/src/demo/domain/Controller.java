@@ -1,12 +1,18 @@
 package demo.domain;
 
-import demo.database.FileHandlerStub;
+//import demo.database.CSVUserHandler;
+import demo.database.Database;
 import demo.ui.UserInterface;
 
 public class Controller {
     boolean isRunning = true;
     private UserInterface ui = new UserInterface();
-    private FileHandlerStub fileHandlerStub = new FileHandlerStub();
+    private Database db;
+
+    public Controller(Database db) {
+        this.db = db;
+    }
+
     public void start(){
 
         while(isRunning){
@@ -25,7 +31,8 @@ public class Controller {
         ui.printMessage("Type in password: ");
         String password = ui.userInput();
         User user = new User(name, password);
-        fileHandlerStub.saveUser(user);
+        db.saveUser(user);
+
     }
 
     public void logIn() {
@@ -33,7 +40,7 @@ public class Controller {
         String name = ui.userInput();
         ui.printMessage("Type in password: ");
         String password = ui.userInput();
-        User user = fileHandlerStub.findUser(name, password);
+        User user = db.findUser(name, password);
         if(user != null){
             ui.printMessage("Welcome user " + name + " " +  user.getRole());
         } else {

@@ -1,0 +1,3 @@
+User{name='tine', password='1234', role='customer'}
+User{name='peter', password='4321', role='customer'}
+User{name='mathias', password='hejhej', role='customer'}

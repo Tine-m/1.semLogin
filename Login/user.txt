@@ -1,0 +1,1 @@
+User{name='tine', password='1234', role='customer'}

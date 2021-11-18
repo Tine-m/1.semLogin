@@ -1,5 +1,4 @@
 package demo.database;
-
 import demo.domain.User;
 
 import java.util.ArrayList;
@@ -9,6 +8,7 @@ public class FileHandlerStub implements Database {
 
     private ArrayList<User> users = new ArrayList();
 
+    @Override
     public User findUser(String name, String password) {
 
         for (int i = 0; i < users.size(); i++) {
@@ -20,6 +20,7 @@ public class FileHandlerStub implements Database {
         return null;
     }
 
+    @Override
     public void saveUser(User user) {
         users.add(user);
     }
